@@ -1,0 +1,13 @@
+/******************************************************************
+Theme Name: platform-wp
+Theme URI: 
+Description: a starting platform for constructing wordpress themes - based on the bones theme
+Author: Kris Tarling
+Author URI: https://github.com/KrisTarling
+Version: 1.0.0
+Tags: 
+*/
+
+.sticky {}          /* DO NOT EDIT THIS */
+.gallery-caption {} /* THESE ARE USELESS */
+.bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */

@@ -1,0 +1,50 @@
+// normalize: http://necolas.github.io/normalize.css/
+@import partials/normalize
+
+// Sass variables
+@import partials/variables
+
+// typography
+@import partials/typography
+
+// Sass functions
+@import partials/functions
+
+// import mixins
+@import partials/mixins
+
+// the grid
+@import partials/bootstrapgrid
+
+// alert boxes
+@import modules/alerts
+
+// buttons
+@import modules/buttons
+
+// forms (inputs & labels)
+@import modules/forms
+
+// base style
+@import screens/xs
+
+// our different screen sizes here
+@media screen and (min-width: $sm)
+	@import screens/sm
+
+@media screen and (min-width: $md)
+	@import screens/md
+
+@media screen and (min-width: $lg)
+	@import screens/lg
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5)
+  // styles in 2x.scss
+  //@import "breakpoints/2x";
+
+// end of media query
+
+@media print
+  // styles in print.scss
+  @import partials/print

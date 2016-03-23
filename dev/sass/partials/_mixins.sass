@@ -1,0 +1,5 @@
+=transition($transition...)
+  // defining prefixes so we can use them in mixins below
+  $prefixes: "-webkit-", ""
+  @each $prefix in $prefixes
+    #{$prefix}transition: $transition
