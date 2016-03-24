@@ -1,11 +1,11 @@
 @-ms-viewport
   width: device-width
-
+$tb: 426px
 $sm: 768px
 $md: 992px
-$lg: 1199px
+$lg: 1120px
 
-$xs: $sm -1 // base size
+$xs: $tb -1 // base size
 
 .visible-xs,
 .visible-sm,
@@ -73,7 +73,7 @@ $xs: $sm -1 // base size
   .visible-sm-inline-block
     display: inline-block !important
 
-@media (min-width: $md) and (max-width: $lg)
+@media (min-width: $md) and (max-width: $lg -1)
   .visible-md
     display: block !important
   table.visible-md
@@ -84,19 +84,19 @@ $xs: $sm -1 // base size
   td.visible-md
     display: table-cell !important
 
-@media (min-width: $md) and (max-width: $lg)
+@media (min-width: $md) and (max-width: $lg -1)
   .visible-md-block
     display: block !important
 
-@media (min-width: $md) and (max-width: $lg)
+@media (min-width: $md) and (max-width: $lg -1)
   .visible-md-inline
     display: inline !important
 
-@media (min-width: $md) and (max-width: $lg)
+@media (min-width: $md) and (max-width: $lg -1)
   .visible-md-inline-block
     display: inline-block !important
 
-@media (min-width: $lg +1)
+@media (min-width: $lg)
   .visible-lg
     display: block !important
   table.visible-lg
@@ -107,15 +107,15 @@ $xs: $sm -1 // base size
   td.visible-lg
     display: table-cell !important
 
-@media (min-width: $lg +1)
+@media (min-width: $lg)
   .visible-lg-block
     display: block !important
 
-@media (min-width: $lg +1)
+@media (min-width: $lg)
   .visible-lg-inline
     display: inline !important
 
-@media (min-width: $lg +1)
+@media (min-width: $lg)
   .visible-lg-inline-block
     display: inline-block !important
 
@@ -127,11 +127,11 @@ $xs: $sm -1 // base size
   .hidden-sm
     display: none !important
 
-@media (min-width: $md) and (max-width: $lg)
+@media (min-width: $md) and (max-width: $lg -1)
   .hidden-md
     display: none !important
 
-@media (min-width: $lg +1)
+@media (min-width: $lg)
   .hidden-lg
     display: none !important
 
@@ -179,18 +179,6 @@ $xs: $sm -1 // base size
   margin-left: auto
   padding-left: 7.5px
   padding-right: 7.5px
-
-@media (min-width: $sm)
-  .container
-    width: 735px
-
-@media (min-width: $md)
-  .container
-    width: 955px
-
-@media (min-width: $lg +1)
-  .container
-    width: 1155px
 
 .container-fluid
   margin-right: auto
@@ -912,7 +900,7 @@ $xs: $sm -1 // base size
   .col-md-offset-0
     margin-left: 0%
 
-@media (min-width: $lg +1)
+@media (min-width: $lg)
   .col, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-13, .col-lg-14, .col-lg-15, .col-lg-16, .col-lg-17, .col-lg-18, .col-lg-19, .col-lg-20, .col-lg-21, .col-lg-22, .col-lg-23, .col-lg-24
     float: left
   .col-lg-24

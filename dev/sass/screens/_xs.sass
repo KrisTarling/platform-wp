@@ -1,14 +1,21 @@
-/*********************
- *GENERAL STYLES
- *********************/
+
+html, body
+  min-height: 100vh
+
 
 body
+  position: relative
   font-size: 100%
   line-height: 1.5
   color: $text-color
   background-color: $gray
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+
+#wrapper
+  min-height: 100vh
+
+.container
 
 /********************
  *WORDPRESS BODY CLASSES
@@ -120,14 +127,6 @@ body
 .paged-1
 
 /* individual paged (i.e. body.paged-3)*/
-
-/*********************
- *LAYOUT & GRID STYLES
- *********************/
-
-.wrap
-  width: 96%
-  margin: 0 auto
 
 /*********************
  *LINK STYLES
@@ -712,6 +711,10 @@ h5, .h5
   clear: both
   background-color: $black
   color: $light-gray
+  position: absolute
+  right: 0
+  left: 0
+  bottom: 0
 
 /*
  *if you checked out the link above:
