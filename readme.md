@@ -1,4 +1,4 @@
-# ![Shoe](library/images/nothumb.gif) Platform-wp
+# ![Shoe](library/images/apple-touch-icon.png) Platform-wp
 
 A wordpress starter theme based on [bones](https://github.com/eddiemachado/bones), with bootstrap integrations and a focus on enhancing development workflow
 
