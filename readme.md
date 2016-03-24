@@ -6,27 +6,18 @@ If you haven't used the vanilla bones theme before, I recommend you get to know 
 
 ---
 
-### Features:
+#### Features:
 
-##### Gulp Ready
-* the included gulpfile.js will handle all your minification, sass processing, image smushing and other helpful development tasks.
+### Bootstrap grid with Mixins!
+Sass variable breakpoints & column width mixins
 
-If you prefer to use another tool, such as grunt, there's nothing stopping you.
+No more assigning unsemantic classes like `.col-lg-8.col-lg-offset-3` to your HTML & PHP
 
-##### Super SASSy
-* straight-up indented sass, no curly braces & semicolons
-
-##### Bootstrap grid with Mixins!
-* sass variable breakpoints & column width mixins
-
-No more assigning unsemantic classes like `.col-lg-8.col-lg-offset-3` in your HTML & PHP
-
-If you want your sidebar to be six columns wide at screen width 992px and above, just add:
+If you want your sidebar to be six columns wide at screen width 992px and above, just add the following to md.sass
 ```sass
 .sidebar
   +col($six)
 ```
-into md.sass
 
 And if you want md.sass to begin at 820px instead? Add:
 ```
@@ -35,11 +26,22 @@ $md: 820px
 into variables.sass and you're done!
 
 
-##### Static styleguide
-* a vanilla HTML styleguide for quickly designing and testing fundamental CSS elements
+### Gulp Ready
+The included gulpfile.js will handle all your minification, sass processing, image smushing and other helpful development tasks.
 
-##### Serperate dev folder
-* separate sass & js development folders for cleaner output
+If you prefer to use another tool, such as grunt, there's nothing stopping you.
+
+
+### Super SASSy
+Straight-up indented sass, no curly braces & semicolons
+
+
+### Static styleguide
+Vanilla HTML styleguide for quickly designing and testing fundamental CSS elements
+
+
+### Serperate dev folder
+separate sass & js development folders for cleaner output
 
 ---
 
