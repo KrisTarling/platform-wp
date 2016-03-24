@@ -1,95 +1,497 @@
-// setting up defaults
+// bootstrap forms (includes our variable breakpoints, so update them here if you change them in the bsgrid.css)
 
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-select,
-textarea,
-.field
-  display: block
-  height: 40px
-  line-height: 1em
-  padding: 0 12px
-  margin-bottom: 14px
-  font-size: 1em
-  color: $text-color
-  border-radius: 3px
-  vertical-align: middle
-  box-shadow: none
+fieldset
+  min-width: 0
+  padding: 0
+  margin: 0
   border: 0
+
+legend
+  display: block
   width: 100%
-  max-width: 400px 
-  background-color: $gray
-  +transition(background-color 0.24s ease-in-out)
-  // a focused input (or hovered on)
-  &:focus,
-  &:active
-    background-color: lighten($gray, 4%)
-    outline: none
-  // end hover or focus
-  // error notification
-  &.error,
-  &.is-invalid
-    color: $alert-red
-    border-color: $alert-red
-    background-color: $white
-    background-position: 99% center
-    background-repeat: no-repeat
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDREQkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDREQ0YwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQ3ODRGRkE2RjA0QTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERBRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+U8iT5wAAAedJREFUeNqk1U9I02Ecx/HtV3aIFAc1hcRDUoGXRAq0oNLA2CrsEFmHbikZu0iQYIFGYAiegkCpLipBxPpDEBMUzB0EhSG2LhG7hMR2GviPgUTvB57Bw8P3+U23B16HPX8+e/b8nt93wezZSMCnhXETF3AcB5BDCnH8Dq98ExcGHcFn8Ah3cdDni+fxnPDv9oAnTB7CKu6VCFXtChZy56LxUjt+jfuB8toSOth9wd7xWAWhqrUjYR/FRTwWJm+iIPT/w7bQf5ljiZnBg45dtKFX6H+LU8gIY8OEV6vgTkStwXWE8BPTGDHGPqNPz2mCfSOOYkA99TvCt1bhGPL68zMcwmncMuape10jrI+q4BbHi/FLn31S9z2x5tRhTc+1W506ipM+T3oRD4X+8+qtc4SqFvL0z/Fr14S+Szjis8bz9Lvvaq8cwS/wwGfdlqfPSWqTiFlX77o13u9Ym1PBs8JAytpRoy44X9Ft9E/gvbA+rYKn8NcaaMVc8UHgBw4b9/iqUQZ6hOAJFbyDcUflmsEX4a6+wTtHGfhAIUqa1U29Zc2BytouThD8x6xuN5CtMPi2CrXLZkZf/HyZoRFCP7n+QVR4PV7uI/AjGghN7OU/r1ilnqILtfpNC+o6vIFljBKYlhb/F2AAgaBsWR5wRiIAAAAASUVORK5CYII=)
-    outline-color: $alert-red
-  // end invalid input
-  // success notification
-  &.success,
-  &.is-valid
-    color: $alert-green
-    border-color: $alert-green
-    background-color: $white
-    background-position: 99% center
-    background-repeat: no-repeat
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDM0NDRERkYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDM0NDRFMEYwNEIxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0MzQ0NERERjA0QjExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0MzQ0NERFRjA0QjExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7olkTQAAAfhJREFUeNqklU9oE0EUhzdroWjw0tBeWlDxkEaIp55TsCU9VKIgCrHBelA8CQ1Kr1WPbZrQ3gqtQqvGqxpQc2jBk6BIIaAGD4qNCKURpDSKiPi98gLDsJt//uBjsztvfnk7895sIPAw6/joGMThFJyAXn2+A+9gA57/TaY/eU0OeBgfhGm4DiGnsb7DAszxBz/NAdcKjMJLuNWCqagHbsscN5+L+hmH4QkMOe1L5jzFfNA2PgT34ajTuY7AGuZB0/hmh5m+gS0r8xv1zRvg+gGCHZiOwnF4DP3iB3sQkYxPd2C6CWfhB9Xwlus5+K1j4jXuaq3a+gM1H9OPcAa+7q9lPidZJqHbiIm7Wg22rsEI7FrPSzAMX/T+ADyAKSsu7Fr1KplehLvwCs5DvfBf65p+MypqRbO1FXK9utH4/QKuaqYTsG3E3INJv00Q46px3+XxanJ/Ute2/vqP4FKDza2KcdljIKdnhS0xXYULTaqmLMZFn8FFSFtvt6x70ExFCS5oUXspq2ssa7oEl1swFa+CGFdgtkHgPDyDKy02zyxNU6lXRUZb1EuHYayNNs+Yh5B0WQo+/8fpJnNTZFuzz2OpjoQ2QruSOQlMy35fEGmEGMxY9e1brxobw7TkWA1h6xfckUPb+JhGoE/Hpfvew7qUld/H9J8AAwDpw3WYrxcZ3QAAAABJRU5ErkJggg==)
-    outline-color: $alert-green
-  // end valid input
-  // a disabled input
-  &[disabled],
-  &.is-disabled
-    cursor: not-allowed
-    border-color: $disabled-gray
-    opacity: 0.6
-    &:focus,
-    &:active
-      background-color: $alert-blue
-    // end disabled focus
-  // end disabled input
+  padding: 0
+  margin-bottom: 20px
+  font-size: 21px
+  line-height: inherit
+  color: #333
+  border: 0
+  border-bottom: 1px solid #e5e5e5
 
-// end input defaults
-
-// spacing out the password (thx @murtaugh)
-input[type="password"]
-  letter-spacing: 0.3em
-
-// textareas
-textarea
+label
+  display: inline-block
   max-width: 100%
-  min-height: 120px
-  line-height: 1.5em
+  margin-bottom: 5px
+  font-weight: bold
 
-// selects
-select
+input[type="search"]
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+input[type="radio"],
+input[type="checkbox"]
+  margin: 4px 0 0
+  margin-top: 1px \9
+  line-height: normal
+
+input[type="file"]
+  display: block
+
+input[type="range"]
+  display: block
+  width: 100%
+
+select[multiple],
+select[size]
+  height: auto
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus
+  outline: thin dotted
+  outline: 5px auto -webkit-focus-ring-color
+  outline-offset: -2px
+
+output
+  display: block
+  padding-top: 7px
+  font-size: 14px
+  line-height: 1.42857143
+  color: #555
+
+.form-control
+  display: block
+  width: 100%
+  height: 34px
+  padding: 6px 12px
+  font-size: 14px
+  line-height: 1.42857143
+  color: #555
+  background-color: #fff
+  background-image: none
+  border: 1px solid #ccc
+  border-radius: 4px
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+
+.form-control:focus
+  border-color: #66afe9
+  outline: 0
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6)
+
+.form-control::-moz-placeholder
+  color: #999
+  opacity: 1
+
+.form-control:-ms-input-placeholder
+  color: #999
+
+.form-control::-webkit-input-placeholder
+  color: #999
+
+.form-control::-ms-expand
+  background-color: transparent
+  border: 0
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control
+  background-color: #eee
+  opacity: 1
+
+.form-control[disabled],
+fieldset[disabled] .form-control
+  cursor: not-allowed
+
+textarea.form-control
+  height: auto
+
+input[type="search"]
   -webkit-appearance: none
-  -moz-appearance: none
-  appearance: none
-  // Base64 encoded little arrow
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAHCAYAAADXhRcnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEOEZCMjYxMEYwNUUxMUUyOTI4REZGQTEzMzA2MDcyNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEOEZCMjYxMUYwNUUxMUUyOTI4REZGQTEzMzA2MDcyNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQ4RkIyNjBFRjA1RTExRTI5MjhERkZBMTMzMDYwNzI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ4RkIyNjBGRjA1RTExRTI5MjhERkZBMTMzMDYwNzI2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Vxkp9gAAAI9JREFUeNpidHFxucHAwKAOxE+AmJmBMPgLxDJAfJMFSKwD4kqoAClgA+P///8ZXF1dPaCGcBKh6QcQB+3evXs7WDMIAA2QB1I7gFgDj0aQFz2BGh+AOEwwUaDAQyBlCMR7cGjcC5KHaQQBuM3IAOiKTiBVhiTUDdRUhq4Oq2aoAelAahIQ5wM1zsCmBiDAADhYMJXVZ9u9AAAAAElFTkSuQmCC)
-  background-repeat: no-repeat
-  background-position: 97.5% center
+
+@media screen and (-webkit-min-device-pixel-ratio: 0)
+  input[type="date"].form-control,
+  input[type="time"].form-control,
+  input[type="datetime-local"].form-control,
+  input[type="month"].form-control
+    line-height: 34px
+  input[type="date"].input-sm,
+  input[type="time"].input-sm,
+  input[type="datetime-local"].input-sm,
+  input[type="month"].input-sm,
+  .input-group-sm input[type="date"],
+  .input-group-sm input[type="time"],
+  .input-group-sm input[type="datetime-local"],
+  .input-group-sm input[type="month"]
+    line-height: 30px
+  input[type="date"].input-lg,
+  input[type="time"].input-lg,
+  input[type="datetime-local"].input-lg,
+  input[type="month"].input-lg,
+  .input-group-lg input[type="date"],
+  .input-group-lg input[type="time"],
+  .input-group-lg input[type="datetime-local"],
+  .input-group-lg input[type="month"]
+    line-height: 46px
+
+.form-group
+  margin-bottom: 15px
+
+.radio,
+.checkbox
+  position: relative
+  display: block
+  margin-top: 10px
+  margin-bottom: 10px
+
+.radio label,
+.checkbox label
+  min-height: 20px
+  padding-left: 20px
+  margin-bottom: 0
+  font-weight: normal
+  cursor: pointer
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"]
+  position: absolute
+  margin-top: 4px \9
+  margin-left: -20px
+
+.radio + .radio,
+.checkbox + .checkbox
+  margin-top: -5px
+
+.radio-inline,
+.checkbox-inline
+  position: relative
+  display: inline-block
+  padding-left: 20px
+  margin-bottom: 0
+  font-weight: normal
+  vertical-align: middle
+  cursor: pointer
+
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline
+  margin-top: 0
+  margin-left: 10px
+
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"].disabled,
+input[type="checkbox"].disabled,
+fieldset[disabled] input[type="radio"],
+fieldset[disabled] input[type="checkbox"]
+  cursor: not-allowed
+
+.radio-inline.disabled,
+.checkbox-inline.disabled,
+fieldset[disabled] .radio-inline,
+fieldset[disabled] .checkbox-inline
+  cursor: not-allowed
+
+.radio.disabled label,
+.checkbox.disabled label,
+fieldset[disabled] .radio label,
+fieldset[disabled] .checkbox label
+  cursor: not-allowed
+
+.form-control-static
+  min-height: 34px
+  padding-top: 7px
+  padding-bottom: 7px
+  margin-bottom: 0
+
+.form-control-static.input-lg,
+.form-control-static.input-sm
+  padding-right: 0
+  padding-left: 0
+
+.input-sm
+  height: 30px
+  padding: 5px 10px
+  font-size: 12px
+  line-height: 1.5
+  border-radius: 3px
+
+select.input-sm
+  height: 30px
+  line-height: 30px
+
+textarea.input-sm,
+select[multiple].input-sm
+  height: auto
+
+.form-group-sm .form-control
+  height: 30px
+  padding: 5px 10px
+  font-size: 12px
+  line-height: 1.5
+  border-radius: 3px
+
+.form-group-sm select.form-control
+  height: 30px
+  line-height: 30px
+
+.form-group-sm textarea.form-control,
+.form-group-sm select[multiple].form-control
+  height: auto
+
+.form-group-sm .form-control-static
+  height: 30px
+  min-height: 32px
+  padding: 6px 10px
+  font-size: 12px
+  line-height: 1.5
+
+.input-lg
+  height: 46px
+  padding: 10px 16px
+  font-size: 18px
+  line-height: 1.3333333
+  border-radius: 6px
+
+select.input-lg
+  height: 46px
+  line-height: 46px
+
+textarea.input-lg,
+select[multiple].input-lg
+  height: auto
+
+.form-group-lg .form-control
+  height: 46px
+  padding: 10px 16px
+  font-size: 18px
+  line-height: 1.3333333
+  border-radius: 6px
+
+.form-group-lg select.form-control
+  height: 46px
+  line-height: 46px
+
+.form-group-lg textarea.form-control,
+.form-group-lg select[multiple].form-control
+  height: auto
+
+.form-group-lg .form-control-static
+  height: 46px
+  min-height: 38px
+  padding: 11px 16px
+  font-size: 18px
+  line-height: 1.3333333
+
+.has-feedback
+  position: relative
+
+.has-feedback .form-control
+  padding-right: 42.5px
+
+.form-control-feedback
+  position: absolute
+  top: 0
+  right: 0
+  z-index: 2
+  display: block
+  width: 34px
+  height: 34px
+  line-height: 34px
+  text-align: center
+  pointer-events: none
+
+.input-lg + .form-control-feedback,
+.input-group-lg + .form-control-feedback,
+.form-group-lg .form-control + .form-control-feedback
+  width: 46px
+  height: 46px
+  line-height: 46px
+
+.input-sm + .form-control-feedback,
+.input-group-sm + .form-control-feedback,
+.form-group-sm .form-control + .form-control-feedback
+  width: 30px
+  height: 30px
+  line-height: 30px
+
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline,
+.has-success.radio label,
+.has-success.checkbox label,
+.has-success.radio-inline label,
+.has-success.checkbox-inline label
+  color: #3c763d
+
+.has-success .form-control
+  border-color: #3c763d
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+.has-success .form-control:focus
+  border-color: #2b542c
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168
+
+.has-success .input-group-addon
+  color: #3c763d
+  background-color: #dff0d8
+  border-color: #3c763d
+
+.has-success .form-control-feedback
+  color: #3c763d
+
+.has-warning .help-block,
+.has-warning .control-label,
+.has-warning .radio,
+.has-warning .checkbox,
+.has-warning .radio-inline,
+.has-warning .checkbox-inline,
+.has-warning.radio label,
+.has-warning.checkbox label,
+.has-warning.radio-inline label,
+.has-warning.checkbox-inline label
+  color: #8a6d3b
+
+.has-warning .form-control
+  border-color: #8a6d3b
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+.has-warning .form-control:focus
+  border-color: #66512c
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b
+
+.has-warning .input-group-addon
+  color: #8a6d3b
+  background-color: #fcf8e3
+  border-color: #8a6d3b
+
+.has-warning .form-control-feedback
+  color: #8a6d3b
+
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline,
+.has-error.radio label,
+.has-error.checkbox label,
+.has-error.radio-inline label,
+.has-error.checkbox-inline label
+  color: #a94442
+
+.has-error .form-control
+  border-color: #a94442
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+.has-error .form-control:focus
+  border-color: #843534
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483
+
+.has-error .input-group-addon
+  color: #a94442
+  background-color: #f2dede
+  border-color: #a94442
+
+.has-error .form-control-feedback
+  color: #a94442
+
+.has-feedback label ~ .form-control-feedback
+  top: 25px
+
+.has-feedback label.sr-only ~ .form-control-feedback
+  top: 0
+
+.help-block
+  display: block
+  margin-top: 5px
+  margin-bottom: 10px
+  color: #737373
+
+@media (min-width: $sm)
+  .form-inline .form-group
+    display: inline-block
+    margin-bottom: 0
+    vertical-align: middle
+  .form-inline .form-control
+    display: inline-block
+    width: auto
+    vertical-align: middle
+  .form-inline .form-control-static
+    display: inline-block
+  .form-inline .input-group
+    display: inline-table
+    vertical-align: middle
+  .form-inline .input-group .input-group-addon,
+  .form-inline .input-group .input-group-btn,
+  .form-inline .input-group .form-control
+    width: auto
+  .form-inline .input-group > .form-control
+    width: 100%
+  .form-inline .control-label
+    margin-bottom: 0
+    vertical-align: middle
+  .form-inline .radio,
+  .form-inline .checkbox
+    display: inline-block
+    margin-top: 0
+    margin-bottom: 0
+    vertical-align: middle
+  .form-inline .radio label,
+  .form-inline .checkbox label
+    padding-left: 0
+  .form-inline .radio input[type="radio"],
+  .form-inline .checkbox input[type="checkbox"]
+    position: relative
+    margin-left: 0
+  .form-inline .has-feedback .form-control-feedback
+    top: 0
+
+.form-horizontal .radio,
+.form-horizontal .checkbox,
+.form-horizontal .radio-inline,
+.form-horizontal .checkbox-inline
+  padding-top: 7px
+  margin-top: 0
+  margin-bottom: 0
+
+.form-horizontal .radio,
+.form-horizontal .checkbox
+  min-height: 27px
+
+.form-horizontal .form-group
+  margin-right: -15px
+  margin-left: -15px
+
+@media (min-width: $sm)
+  .form-horizontal .control-label
+    padding-top: 7px
+    margin-bottom: 0
+    text-align: right
+
+.form-horizontal .has-feedback .form-control-feedback
+  right: 15px
+
+@media (min-width: $sm)
+  .form-horizontal .form-group-lg .control-label
+    padding-top: 11px
+    font-size: 18px
+
+@media (min-width: $sm)
+  .form-horizontal .form-group-sm .control-label
+    padding-top: 6px
+    font-size: 12px

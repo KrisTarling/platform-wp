@@ -4,8 +4,13 @@
 // Sass variables
 @import partials/variables
 
+// bootstrap grid
+@import partials/bsgrid
+
 // typography
 @import partials/typography
+//glyphicon halflings from bootstrap css
+@import partials/glyphs 
 
 // Sass functions
 @import partials/functions
@@ -13,22 +18,19 @@
 // import mixins
 @import partials/mixins
 
-// the grid
-@import partials/bootstrapgrid
-
 // alert boxes
 @import modules/alerts
-
-// buttons
-@import modules/buttons
 
 // forms (inputs & labels)
 @import modules/forms
 
+// bootstrap classes
+@import modules/bsmodules
+
 // base style
 @import screens/xs
 
-// our different screen sizes here
+// different screen sizes
 @media screen and (min-width: $tb)
 	@import screens/tb
 

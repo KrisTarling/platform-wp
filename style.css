@@ -1,11 +1,16 @@
 /******************************************************************
 Theme Name: platform-wp
-Theme URI: 
+Theme URI: https://github.com/KrisTarling/platform-wp
 Description: a starting platform for constructing wordpress themes - based on the bones theme
 Author: Kris Tarling
 Author URI: https://github.com/KrisTarling
-Version: 1.0.0
-Tags: 
+Version: 1.0.2
+Tags: bones, starter, platform
+******************************************************************/
+
+/*
+This file forms the information that appears in the backend of your wordpress installation.
+Don't skimp on details like this if your project is going to be used by a client.
 */
 
 .sticky {}          /* DO NOT EDIT THIS */

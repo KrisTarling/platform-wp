@@ -1,0 +1,1 @@
+if you're using gulp (with the gulpfile.js supplied in the root folder) images you save here will be minified and saved to the library directory

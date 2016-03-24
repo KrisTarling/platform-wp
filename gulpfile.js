@@ -33,7 +33,7 @@
 
     // Uglify JS
         gulp.task('uglify', function(){
-            gulp.src('./dev/js/scripts.js')
+            gulp.src('./dev/js/*.js')
                 .pipe(uglify())
                 .pipe(gulp.dest('./library/js'));
         });
