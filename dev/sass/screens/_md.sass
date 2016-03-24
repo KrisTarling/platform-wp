@@ -4,17 +4,24 @@ body
 .container
 
 /*********************
- *LAYOUT & GRID STYLES
- *********************/
-
-
-/*********************
  *HEADER STYLES
  *********************/
 
 .header
 
 #logo
+
+/*********************
+ *COLUMN LAYOUT
+ *********************/
+ // set all the columns here so they're easy to find again
+
+#main
+  +col($six)
+
+.sidebar
+  +col($six)
+
 
 /*********************
  *NAVIGATION STYLES
@@ -88,12 +95,18 @@ body
 
 /* end .nav
 
+
+/*********************
+ *CONTENT
+ *********************/
+
+#main
+
 /*********************
  *SIDEBARS & ASIDES
  *********************/
 
 .sidebar
-  margin-top: 2.2em
 
 .widgettitle
   border-bottom: 2px solid #444

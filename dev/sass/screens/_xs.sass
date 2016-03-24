@@ -189,12 +189,10 @@ h5, .h5
  *********************/
 
 .header
-  background-color: $black
 
 #logo
-  margin: 0.75em 0
+  margin: -0.1em 0
   a
-    color: $white
 
 /*********************
  *NAVIGATION STYLES
@@ -207,13 +205,12 @@ h5, .h5
  *the navs on the site so our css is cleaner
  *and more scalable.*/
 
-.nav
+nav
   border-bottom: 0
   margin: 0
   li
     a
       display: block
-      color: $white
       text-decoration: none
       padding: 0.75em
       /*
@@ -712,10 +709,6 @@ h5, .h5
   clear: both
   background-color: $black
   color: $light-gray
-  position: absolute
-  right: 0
-  left: 0
-  bottom: 0
 
 /*
  *if you checked out the link above:
@@ -726,7 +719,9 @@ h5, .h5
  *override these styles for the desktop
  *view.*/
 .footer-links
+  text-align: center
   ul
+    margin: 0 auto
     li
 
 /* end .footer-links*/

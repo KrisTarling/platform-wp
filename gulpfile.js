@@ -1,8 +1,12 @@
+    // !!!!!!! uncomment the minify css line for production builds
+
+
     // Gulp
     var gulp = require('gulp');
 
     // Sass/CSS stuff
     var sass = require('gulp-sass');
+    var sourcemaps = require('gulp-sourcemaps');
     var prefix = require('gulp-autoprefixer');
     var minifycss = require('gulp-clean-css');
 
@@ -20,14 +24,14 @@
 
     // compile all your Sass
         gulp.task('sass', function (){
-            gulp.src('./dev/sass/*.sass')
-                .pipe(sass({
-                    outputStyle: 'expanded'
-                }))
+            return gulp.src('./dev/sass/*.sass')
+                .pipe(sourcemaps.init())
+                .pipe(sass().on('error', sass.logError))
+                .pipe(sourcemaps.write())
                 .pipe(prefix(
                     "last 2 versions", "> 1%", "ie 8", "ie 7"
-                    ))
-                .pipe(minifycss())
+                ))
+// !!!!!!uncomment for production                .pipe(minifycss()) !!!!!! //
                 .pipe(gulp.dest('./library/css'));
         });
 
@@ -38,13 +42,12 @@
                 .pipe(gulp.dest('./library/js'));
         });
 
-    // Images
+    // SVG & Images
         gulp.task('svgmin', function() {
             gulp.src('./dev/images/svg/*.svg')
             .pipe(svgmin())
             .pipe(gulp.dest('./library/images/svg'))
         });
-
         gulp.task('imagemin', function () {
             gulp.src('./dev/images/**/*')
             .pipe(imagemin())
@@ -54,7 +57,6 @@
 //
 
     gulp.task('default', function(){
-
         // watch me getting Sassy
         gulp.watch("./dev/sass/**/*.sass", function(event){
             gulp.run('sass');
