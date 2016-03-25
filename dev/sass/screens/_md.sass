@@ -14,20 +14,20 @@ body
 /*********************
  *COLUMN LAYOUT
  *********************/
- // set all the columns here so they're easy to find again
+// set all the columns here so they're easy to find again
 
 #main
-  +col($six)
+  +col($eight)
 
 .sidebar
-  +col($six)
+  +col($four)
 
 
 /*********************
  *NAVIGATION STYLES
  *********************/
 
-.nav
+.navbar-header
   border: 0
   ul
     background: $black
@@ -41,7 +41,6 @@ body
        *you can use hover styles here even though this size
        *has the possibility of being a mobile device.*/
       &:hover, &:focus
-        color: $white
         text-decoration: underline
     &:first-child
     &:last-child

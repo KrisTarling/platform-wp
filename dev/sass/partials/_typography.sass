@@ -2,6 +2,9 @@
 $sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
 $serif: "Georgia", Cambria, Times New Roman, Times, serif
 
+body
+  font-size: 16px
+
 p
   -ms-word-wrap: break-word
   word-break: break-word
@@ -22,120 +25,43 @@ p
   -o-font-feature-settings: "liga", "dlig"
   font-feature-settings: "liga", "dlig"
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6
-  font-family: inherit
+
+/******************************************************************
+ *H1, H2, H3, H4, H5 STYLES
+ ******************************************************************/
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5
+  text-rendering: optimizelegibility
   font-weight: 500
-  line-height: 1.1
-  color: inherit
+  &.small, &small
+    font-weight: normal
+    line-height: 1
+    color: #777
 
-h1 small,
-h2 small,
-h3 small,
-h4 small,
-h5 small,
-h6 small,
-.h1 small,
-.h2 small,
-.h3 small,
-.h4 small,
-.h5 small,
-.h6 small,
-h1 .small,
-h2 .small,
-h3 .small,
-h4 .small,
-h5 .small,
-h6 .small,
-.h1 .small,
-.h2 .small,
-.h3 .small,
-.h4 .small,
-.h5 .small,
-.h6 .small
-  font-weight: normal
-  line-height: 1
-  color: #777
+  a
+    text-decoration: none
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3
-  margin-top: 20px
-  margin-bottom: 10px
+h1, .h1
+  font-size: 2.5em
+  line-height: 1.333em
 
-h1 small,
-.h1 small,
-h2 small,
-.h2 small,
-h3 small,
-.h3 small,
-h1 .small,
-.h1 .small,
-h2 .small,
-.h2 .small,
-h3 .small,
-.h3 .small
-  font-size: 65%
+h2, .h2
+  font-size: 2.25em
+  line-height: 1.4em
+  margin-bottom: 0.375em
 
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6
-  margin-top: 10px
-  margin-bottom: 10px
+h3, .h3
+  font-size: 1.125em
 
-h4 small,
-.h4 small,
-h5 small,
-.h5 small,
-h6 small,
-.h6 small,
-h4 .small,
-.h4 .small,
-h5 .small,
-.h5 .small,
-h6 .small,
-.h6 .small
-  font-size: 75%
+h4, .h4
+  font-size: 1.1em
+  font-weight: 700
 
-h1,
-.h1
-  font-size: 36px
-
-h2,
-.h2
-  font-size: 30px
-
-h3,
-.h3
-  font-size: 24px
-
-h4,
-.h4
-  font-size: 18px
-
-h5,
-.h5
-  font-size: 14px
-
-h6,
-.h6
-  font-size: 12px
+h5, .h5
+  font-size: 0.846em
+  line-height: 2.09em
+  text-transform: uppercase
+  letter-spacing: 2px
 
 p
   margin: 0 0 10px

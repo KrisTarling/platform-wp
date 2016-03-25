@@ -46,7 +46,6 @@
 
 			<header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 
-				<div id="inner-header">
 
 					
 					<nav role="navigation" itemscope class="navbar navbar-default" itemtype="http://schema.org/SiteNavigationElement">
@@ -58,27 +57,38 @@
             <span class="icon-bar"></span>
         </button>
 						<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
-						<p id="logo" itemscope itemtype="http://schema.org/Organization">
+						<div id="logo" itemscope itemtype="http://schema.org/Organization">
 							<a class="navbar-brand" href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a>
-						</p>
+						</div>
 						</div>
 						<div id="navbarCollapse" class="collapse navbar-collapse">
 						<?php wp_nav_menu(array(
     					         'container' => false,                           // remove nav container
-    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-    					         'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
-    					         'menu_class' => 'nav top-nav cf',               // adding custom nav class
-    					         'theme_location' => 'main-nav',                 // where it's located in the theme
+    					         'container_class' => 'menu cf collapse navbar-collapse',                 // class of container (should you choose to use it)
+    					         'menu' => 'primary',  // nav name
+    					         'menu_class' => 'nav navbar-nav menu',
+    					         'theme_location' => 'primary',
+                			 'depth'             => 2,
+                			 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                			 'walker'            => new wp_bootstrap_navwalker())
+    					         
+						) ?>
+						<?php wp_nav_menu(array(
+    					         'container' => false,                           // remove nav container
+    					         'container_class' => 'menu cf collapse navbar-collapse',                 // class of container (should you choose to use it)
+    					         'menu' => 'Right Menu',  // nav name
+    					         'menu_class' => 'nav navbar-nav navbar-right cf menu',               // adding custom nav class
+    					         'theme_location' => 'right-nav',                 // where it's located in the theme
     					         'before' => '',                                 // before the menu
         			               'after' => '',                                  // after the menu
         			               'link_before' => '',                            // before each link
-        			               'link_after' => '',                             // after each link
-        			               'depth' => 0,                                   // limit the depth of the nav
-    					         'fallback_cb' => ''                             // fallback function (if there is one)
-						)); ?>
+        			               'link_after' => '',
+                			 'depth'             => 2,
+                			 'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                			 'walker'            => new wp_bootstrap_navwalker())
+						); ?>
 						</div>
 					</nav>
 
-				</div>
 
 			</header>

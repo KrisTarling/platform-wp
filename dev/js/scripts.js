@@ -104,4 +104,14 @@ jQuery(document).ready(function($) {
   loadGravatars();
 
 
+  // push any #footer elements to bottom of page
+  var docHeight = $(window).height();
+   var footerHeight = $('#footer').height();
+   var footerTop = $('#footer').position().top + footerHeight;
+
+   if (footerTop < docHeight) {
+    $('#footer').css('margin-top', 1+ (docHeight - footerTop) + 'px');
+   }
+
+
 }); /* end of as page load scripts */

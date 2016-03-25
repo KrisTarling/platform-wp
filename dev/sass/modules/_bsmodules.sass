@@ -268,11 +268,8 @@ blockquote .small
   font-size: 80%
   line-height: 1.42857143
   color: #777
-
-blockquote footer:before,
-blockquote small:before,
-blockquote .small:before
-  content: '\2014 \00A0'
+  &:before
+    content: '\2014 \00A0'
 
 .blockquote-reverse,
 blockquote.pull-right
@@ -344,14 +341,13 @@ pre
   background-color: #f5f5f5
   border: 1px solid #ccc
   border-radius: 4px
-
-pre code
-  padding: 0
-  font-size: inherit
-  color: inherit
-  white-space: pre-wrap
-  background-color: transparent
-  border-radius: 0
+  code
+    padding: 0
+    font-size: inherit
+    color: inherit
+    white-space: pre-wrap
+    background-color: transparent
+    border-radius: 0
 
 .pre-scrollable
   max-height: 340px
@@ -423,9 +419,7 @@ th
 .table-condensed > tfoot > tr > td
   padding: 5px
 
-.table-bordered
-  border: 1px solid #ddd
-
+.table-bordered,
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
 .table-bordered > tfoot > tr > th,
@@ -580,22 +574,13 @@ table th[class*="col-"]
   .table-responsive > .table > tbody > tr > td,
   .table-responsive > .table > tfoot > tr > td
     white-space: nowrap
+    &:first-child
+      border-left: 0
+    &:last-child
+      border-right: 0
+
   .table-responsive > .table-bordered
     border: 0
-  .table-responsive > .table-bordered > thead > tr > th:first-child,
-  .table-responsive > .table-bordered > tbody > tr > th:first-child,
-  .table-responsive > .table-bordered > tfoot > tr > th:first-child,
-  .table-responsive > .table-bordered > thead > tr > td:first-child,
-  .table-responsive > .table-bordered > tbody > tr > td:first-child,
-  .table-responsive > .table-bordered > tfoot > tr > td:first-child
-    border-left: 0
-  .table-responsive > .table-bordered > thead > tr > th:last-child,
-  .table-responsive > .table-bordered > tbody > tr > th:last-child,
-  .table-responsive > .table-bordered > tfoot > tr > th:last-child,
-  .table-responsive > .table-bordered > thead > tr > td:last-child,
-  .table-responsive > .table-bordered > tbody > tr > td:last-child,
-  .table-responsive > .table-bordered > tfoot > tr > td:last-child
-    border-right: 0
   .table-responsive > .table-bordered > tbody > tr:last-child > th,
   .table-responsive > .table-bordered > tfoot > tr:last-child > th,
   .table-responsive > .table-bordered > tbody > tr:last-child > td,
@@ -647,136 +632,6 @@ tbody.collapse.in
   border-top: 4px solid \9
   border-right: 4px solid transparent
   border-left: 4px solid transparent
-
-.dropup,
-.dropdown
-  position: relative
-
-.dropdown-toggle:focus
-  outline: 0
-
-.dropdown-menu
-  position: absolute
-  top: 100%
-  left: 0
-  z-index: 1000
-  display: none
-  float: left
-  min-width: 160px
-  padding: 5px 0
-  margin: 2px 0 0
-  font-size: 14px
-  text-align: left
-  list-style: none
-  background-color: #fff
-  -webkit-background-clip: padding-box
-  background-clip: padding-box
-  border: 1px solid #ccc
-  border: 1px solid rgba(0, 0, 0, 0.15)
-  border-radius: 4px
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
-
-.dropdown-menu.pull-right
-  right: 0
-  left: auto
-
-.dropdown-menu .divider
-  height: 1px
-  margin: 9px 0
-  overflow: hidden
-  background-color: #e5e5e5
-
-.dropdown-menu > li > a
-  display: block
-  padding: 3px 20px
-  clear: both
-  font-weight: normal
-  line-height: 1.42857143
-  color: #333
-  white-space: nowrap
-
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus
-  color: #262626
-  text-decoration: none
-  background-color: #f5f5f5
-
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus
-  color: #fff
-  text-decoration: none
-  background-color: #337ab7
-  outline: 0
-
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus
-  color: #777
-
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus
-  text-decoration: none
-  cursor: not-allowed
-  background-color: transparent
-  background-image: none
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
-
-.open > .dropdown-menu
-  display: block
-
-.open > a
-  outline: 0
-
-.dropdown-menu-right
-  right: 0
-  left: auto
-
-.dropdown-menu-left
-  right: auto
-  left: 0
-
-.dropdown-header
-  display: block
-  padding: 3px 20px
-  font-size: 12px
-  line-height: 1.42857143
-  color: #777
-  white-space: nowrap
-
-.dropdown-backdrop
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  z-index: 990
-
-.pull-right > .dropdown-menu
-  right: 0
-  left: auto
-
-.dropup .caret,
-.navbar-fixed-bottom .dropdown .caret
-  content: ""
-  border-top: 0
-  border-bottom: 4px dashed
-  border-bottom: 4px solid \9
-
-.dropup .dropdown-menu,
-.navbar-fixed-bottom .dropdown .dropdown-menu
-  top: auto
-  bottom: 100%
-  margin-bottom: 2px
-
-@media (min-width: $sm)
-  .navbar-right .dropdown-menu
-    right: 0
-    left: auto
-  .navbar-right .dropdown-menu-left
-    right: auto
-    left: 0
 
 .btn
   display: inline-block
@@ -1584,7 +1439,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 .nav > li > a
   position: relative
   display: block
-  padding: 10px 15px
+  padding: 15px
 
 .nav > li > a:hover,
 .nav > li > a:focus
@@ -1820,9 +1675,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-brand
   float: left
-  height: 44px
-  padding: 15px 15px
-  font-size: 18px
+  padding: 15px
+  font-size: 20px
   line-height: 20px
 
 .navbar-brand:hover,
@@ -1869,8 +1723,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
   margin: 7.5px -15px
 
 .navbar-nav > li > a
-  padding-top: 10px
-  padding-bottom: 10px
+  padding-top: 15px
+  padding-bottom: 15px
   line-height: 20px
 
 @media (max-width: $sm -1)
@@ -2014,7 +1868,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-default
   background-color: #f8f8f8
-  border-color: #e7e7e7
 
 .navbar-default .navbar-brand
   color: #777
@@ -2029,11 +1882,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-default .navbar-nav > li > a
   color: #777
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus
-  color: #333
-  background-color: transparent
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -2056,10 +1904,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-default .navbar-toggle .icon-bar
   background-color: #888
-
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form
-  border-color: #e7e7e7
 
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -2219,13 +2063,18 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
   color: #777
 
 .pagination
-  display: inline-block
+  display: block
+  text-align: center
   padding-left: 0
   margin: 20px 0
+  overflow: auto
   border-radius: 4px
+  
+  ul
+    margin: 0 auto
 
-.pagination > li
-  display: inline
+  li
+    display: inline
 
 .pagination > li > a,
 .pagination > li > span
@@ -2493,18 +2342,6 @@ a.badge:focus
 .jumbotron .container
   max-width: 100%
 
-@media screen and (min-width: $sm)
-  .jumbotron
-    padding-top: 48px
-    padding-bottom: 48px
-  .container .jumbotron,
-  .container-fluid .jumbotron
-    padding-right: 60px
-    padding-left: 60px
-  .jumbotron h1,
-  .jumbotron .h1
-    font-size: 63px
-
 .thumbnail
   display: block
   padding: 4px
@@ -2651,51 +2488,29 @@ a.thumbnail.active
   -o-transition: width .6s ease
   transition: width .6s ease
 
-.progress-striped .progress-bar,
-.progress-bar-striped
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+.progress-striped .progress-bar, .progress-bar-striped
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
   -webkit-background-size: 40px 40px
   background-size: 40px 40px
 
 .progress.active .progress-bar,
 .progress-bar.active
-  -webkit-animation: progress-bar-stripes 2s linear infinite
-  -o-animation: progress-bar-stripes 2s linear infinite
   animation: progress-bar-stripes 2s linear infinite
 
 .progress-bar-success
   background-color: #5cb85c
 
-.progress-striped .progress-bar-success
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-
 .progress-bar-info
   background-color: #5bc0de
-
-.progress-striped .progress-bar-info
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
 
 .progress-bar-warning
   background-color: #f0ad4e
 
-.progress-striped .progress-bar-warning
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+.progress-striped .progress-bar-warning, .progress-striped .progress-bar-danger, .progress-striped .progress-bar-info, .progress-striped .progress-bar-success
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
 
 .progress-bar-danger
   background-color: #d9534f
-
-.progress-striped .progress-bar-danger
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
 
 .media
   margin-top: 15px
@@ -3472,16 +3287,6 @@ button.close
   height: 50px
   overflow: scroll
 
-@media (min-width: $sm)
-  .modal-dialog
-    width: 600px
-    margin: 30px auto
-  .modal-content
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
-  .modal-sm
-    width: 300px
-
 @media (min-width: $md)
   .modal-lg
     width: 900px
@@ -3822,21 +3627,13 @@ button.close
   opacity: .5
 
 .carousel-control.left
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%)
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%)
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)))
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)
   background-repeat: repeat-x
 
 .carousel-control.right
   right: 0
   left: auto
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%)
-  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%)
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)))
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%)
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)
   background-repeat: repeat-x
 
 .carousel-control:hover,
@@ -3924,30 +3721,6 @@ button.close
 .carousel-caption .btn
   text-shadow: none
 
-@media screen and (min-width: $sm)
-  .carousel-control .glyphicon-chevron-left,
-  .carousel-control .glyphicon-chevron-right,
-  .carousel-control .icon-prev,
-  .carousel-control .icon-next
-    width: 30px
-    height: 30px
-    margin-top: -10px
-    font-size: 30px
-  .carousel-control .glyphicon-chevron-left,
-  .carousel-control .icon-prev
-    margin-left: -10px
-  .carousel-control .glyphicon-chevron-right,
-  .carousel-control .icon-next
-    margin-right: -10px
-  .carousel-caption
-    right: 20%
-    left: 20%
-    padding-bottom: 30px
-  .carousel-indicators
-    bottom: 20px
-
-
-
 .center-block
   display: block
   margin-right: auto
@@ -4030,28 +3803,7 @@ button.close
   .visible-xs-inline-block
     display: inline-block !important
 
-@media (min-width: $sm) and (max-width: $md -1)
-  .visible-sm
-    display: block !important
-  table.visible-sm
-    display: table !important
-  tr.visible-sm
-    display: table-row !important
-  th.visible-sm,
-  td.visible-sm
-    display: table-cell !important
 
-@media (min-width: $sm) and (max-width: $md -1)
-  .visible-sm-block
-    display: block !important
-
-@media (min-width: $sm) and (max-width: $md -1)
-  .visible-sm-inline
-    display: inline !important
-
-@media (min-width: $sm) and (max-width: $md -1)
-  .visible-sm-inline-block
-    display: inline-block !important
 
 @media (min-width: $md) and (max-width: $lg -1)
   .visible-md
@@ -4101,10 +3853,6 @@ button.close
 
 @media (max-width: $sm -1)
   .hidden-xs
-    display: none !important
-
-@media (min-width: $sm) and (max-width: $md -1)
-  .hidden-sm
     display: none !important
 
 @media (min-width: $md) and (max-width: $lg -1)

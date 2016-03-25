@@ -25,12 +25,13 @@
     // compile all your Sass
         gulp.task('sass', function (){
             return gulp.src('./dev/sass/*.sass')
+                //.pipe(prefix(
+                //    "last 2 versions", "> 1%", "ie 8", "ie 7"
+               // ))
                 .pipe(sourcemaps.init())
                 .pipe(sass().on('error', sass.logError))
                 .pipe(sourcemaps.write())
-                .pipe(prefix(
-                    "last 2 versions", "> 1%", "ie 8", "ie 7"
-                ))
+                
 // !!!!!!uncomment for production                .pipe(minifycss()) !!!!!! //
                 .pipe(gulp.dest('./library/css'));
         });

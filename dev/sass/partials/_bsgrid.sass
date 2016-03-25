@@ -13,13 +13,6 @@ $xs: $tb -1 // extra small devices & base styles
   margin-left: -7.5px
   margin-right: -7.5px
 
-.col
-  position: relative
-  min-height: 1px
-  padding-left: 7.5px
-  padding-right: 7.5px
-  float: left
-
 // variables for our column mixins
 
 $zero: auto
@@ -38,7 +31,12 @@ $twelve: 100%
 
 =col($num)
   width: $num
-  @extend .col
+  position: relative
+  min-height: 1px
+  padding-left: 7.5px
+  padding-right: 7.5px
+  float: left
+  clear: none
 
 =col-offset($num)
   margin-left: $num

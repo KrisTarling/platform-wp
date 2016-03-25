@@ -1,6 +1,6 @@
 # ![Shoe](library/images/apple-touch-icon.png) Platform-wp
 
-A wordpress starter theme based on [bones](https://github.com/eddiemachado/bones), with bootstrap integrations and a focus on enhancing development workflow
+A wordpress starter theme based on [bones](https://github.com/eddiemachado/bones), with bootstrap 3 integrations and a focus on enhancing development workflow
 
 If you haven't used the vanilla bones theme before, I recommend you get to know that first before using Platform. Platform assumes you are already familiar with bones, wordpress, bootstrap and all the other component parts.
 
@@ -8,12 +8,12 @@ If you haven't used the vanilla bones theme before, I recommend you get to know 
 
 #### Features:
 
-### Bootstrap grid with Mixins!
+### Bootstrap 3 grid with Mixins!
 Sass variable breakpoints & column width mixins
 
 No more assigning unsemantic classes like `.col-lg-8.col-lg-offset-3` to your HTML & PHP
 
-If you want your sidebar to be six columns wide at screen width 992px and above, just add the following to md.sass
+If you want the sidebar to be six columns wide at screen width 992px and above, just add the following to `md.sass`:
 ```sass
 .sidebar
   +col($six)
@@ -23,7 +23,7 @@ And if you want md.sass to begin at 820px instead? Add:
 ```
 $md: 820px
 ```
-into variables.sass and you're done!
+into `variables.sass` and you're done!
 
 
 ### Gulp Ready
@@ -32,16 +32,16 @@ The included gulpfile.js will handle all your minification, sass processing, ima
 If you prefer to use another tool, such as grunt, there's nothing stopping you.
 
 
-### Super SASSy
-Straight-up indented sass, no curly braces & semicolons
+### SASS
+Straight-up indented sass, no curly braces or semicolons.
 
 
 ### Static styleguide
-Vanilla HTML styleguide for quickly designing and testing fundamental CSS elements
+Vanilla HTML styleguide for quickly designing and testing fundamental CSS elements.
 
 
 ### Serperate dev folder
-separate sass & js development folders for cleaner output
+separate sass & js development folders for cleaner output.
 
 ---
 

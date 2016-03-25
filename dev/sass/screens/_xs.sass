@@ -148,51 +148,12 @@ a, a:visited
      *for mobile devices.*/
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3)
 
-/******************************************************************
- *H1, H2, H3, H4, H5 STYLES
- ******************************************************************/
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5
-  text-rendering: optimizelegibility
-  font-weight: 500
-  /*
-   *if you're going to use webfonts, be sure to check your weights
-   *http://css-tricks.com/watch-your-font-weight/
-  /* removing text decoration from all headline links*/
-  a
-    text-decoration: none
-
-h1, .h1
-  font-size: 2.5em
-  line-height: 1.333em
-
-h2, .h2
-  font-size: 1.75em
-  line-height: 1.4em
-  margin-bottom: 0.375em
-
-h3, .h3
-  font-size: 1.125em
-
-h4, .h4
-  font-size: 1.1em
-  font-weight: 700
-
-h5, .h5
-  font-size: 0.846em
-  line-height: 2.09em
-  text-transform: uppercase
-  letter-spacing: 2px
 
 /*********************
  *HEADER STYLES
  *********************/
 
-.header
 
-#logo
-  margin: -0.1em 0
-  a
 
 /*********************
  *NAVIGATION STYLES
@@ -254,11 +215,10 @@ nav
 #content
   margin-top: 1.5em
 
+
 .hentry
   background-color: $white
-  border-radius: 3px
   margin-bottom: 1.5em
-  border: 1px solid $border-color
   header
     border-bottom: 1px solid $light-gray
     padding: 1.5em
@@ -680,8 +640,6 @@ nav
  *SIDEBARS & ASIDES
  *********************/
 
-.sidebar
-
 .widgettitle
 
 .widget
@@ -697,8 +655,6 @@ nav
   background-color: $white
   padding: 1.5em
   text-align: center
-  border: 1px solid $border-color
-  border-radius: 2px
   margin-bottom: 1.5em
 
 /*********************
@@ -726,4 +682,6 @@ nav
 
 /* end .footer-links*/
 
-.copyright
+
+p.source-org.copyright
+  text-align: center
